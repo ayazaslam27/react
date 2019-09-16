@@ -5,18 +5,10 @@ import Tab from "@material-ui/core/Tab";
 import { Route, Link } from "react-router-dom";
 import * as Routes from "../../constants/routes";
 import { HomeComponent } from "../Pages/Home";
-import { AccountComponent } from "../Pages/Account";
+import { AccountPage } from "../Pages/AccountPage";
 import { AdminComponent } from "../Pages/Admin";
 import { ContactComponent } from "../Pages/Contact";
 import { CounterPage } from "../Pages/CounterParent";
-
-import { connect } from "react-redux";
-
-function mapStateToProps(state) {
-  return {
-    isUserAuthorized: state.isUserAuthorized
-  };
-}
 
 function NavigationComponent({ isUserAuthorized }) {
   const [value, setValue] = React.useState(1);
@@ -67,16 +59,12 @@ function NavigationComponent({ isUserAuthorized }) {
         </Tabs>
       </AppBar>
       <Route path={Routes.HOME} component={HomeComponent} />
-      <Route path={Routes.ACCOUNT} component={AccountComponent} />
+      <Route path={Routes.ACCOUNT} component={AccountPage} />
       <Route path={Routes.ADMIN} component={AdminComponent} />
       <Route path={Routes.CONTACT} component={ContactComponent} />
       <Route path={Routes.COUNTER} component={CounterPage} />
     </div>
   );
-
-  function handleChange(event, newValue) {
-    setValue(newValue);
-  }
 }
 
 export default NavigationComponent;

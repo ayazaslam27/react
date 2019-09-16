@@ -1,14 +1,14 @@
 import { USER_AUTHORISED } from "./actions";
 
 const initialState = {
-  isUserAuthorized: false
+  isUserLoggedIn: false
 };
 
 function rootReducer(state = initialState, action) {
   if (action.type === USER_AUTHORISED) {
     return {
       ...state,
-      isUserAuthorized: !state.isUserAuthorized
+      isUserLoggedIn: !state.isUserLoggedIn
     };
   }
 
