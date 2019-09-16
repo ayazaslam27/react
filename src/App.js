@@ -1,22 +1,18 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { HomeComponent } from "./Components/Home";
-import { CounterPage } from "./Components/CounterPage";
+import Navigation from "./Components/Navigation/nav";
+import * as Routes from "./constants/routes";
+import LandingPage from "./Components/Pages/LandingPage";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/counterPage">Counter</Link>
-        </nav>
-
-        <Route path="/" exact component={HomeComponent} />
-        <Route path="/counterPage" component={CounterPage} />
-      </Router>
-    </div>
+    <Router>
+      <div className="App">
+        <Navigation></Navigation>
+      </div>
+      <Route exact path={Routes.LANDING} component={LandingPage} />
+    </Router>
   );
 }
 

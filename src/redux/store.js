@@ -1,6 +1,14 @@
-import { createStore, applyMiddleware } from "redux";
-import reducer from "./reducers.js";
-import counterMiddleware from './counterMiddleWare';
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import authenticationReducer from "./authenticationReducer";
+import counterReducer from "./counterReducer";
+import counterMiddleware from "./counterMiddleWare";
 
-export const store = createStore(reducer, applyMiddleware(counterMiddleware));
+let combinedReducers = combineReducers({
+  auth: authenticationReducer,
+  counter: counterReducer
+});
 
+export const store = createStore(
+  combinedReducers,
+  applyMiddleware(counterMiddleware)
+);
