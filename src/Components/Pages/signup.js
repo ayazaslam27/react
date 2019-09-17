@@ -1,5 +1,11 @@
 import React from "react";
 
-export default function SignUpComponent() {
-  return <h1>Sign up.</h1>;
+function signUpFunctionalComponent() {
+  return (
+    <div>
+      <h1>Sign up</h1>
+    </div>
+  );
 }
+
+export default signUpFunctionalComponent;

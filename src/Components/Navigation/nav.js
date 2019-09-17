@@ -58,7 +58,7 @@ function NavigationComponent({ isUserAuthorized }) {
           ></Tab>
         </Tabs>
       </AppBar>
-      <Route path={Routes.HOME} component={HomeComponent} />
+      <Route exact path={Routes.HOME} component={HomeComponent} />
       <Route path={Routes.ACCOUNT} component={AccountPage} />
       <Route path={Routes.ADMIN} component={AdminComponent} />
       <Route path={Routes.CONTACT} component={ContactComponent} />

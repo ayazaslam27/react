@@ -1,11 +1,11 @@
 import React from "react";
 
-export class SignIn extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Signin</h1>
-      </div>
-    );
-  }
+function signInFunctionalComponent() {
+  return (
+    <div>
+      <h1>Signin</h1>
+    </div>
+  );
 }
+
+export default signInFunctionalComponent;
