@@ -1,28 +1,43 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, Link } from "react-router-dom";
-import signinComponent from "./SignIn";
+import MaterialLink from "@material-ui/core/Link";
+import { SignInComponent } from "./SignIn";
 import signupComponent from "./SignUp";
-import modal from "../Modal/modal";
 
 class AccountPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { showSignInModal: false };
+    this.showSignInForm = this.showSignInForm.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  showSignInForm() {
+    this.setState({ showSignInModal: true });
+  }
+
+  handleChange(showModal) {
+    this.setState({ showSignInModal: showModal });
+  }
+
   render() {
     let task;
     if (!this.props.isUserLoggedIn) {
       task = (
         <div>
           You are not logged in. Please{" "}
-          <Link to={`${this.props.match.url}/sign-in`}>sign in</Link> or if you
+          <MaterialLink onClick={this.showSignInForm}>sign in </MaterialLink>
           still don't have an account{" "}
           <Link to={`${this.props.match.url}/sign-up`}>sign up</Link> with us
           <Route
             path={`${this.props.match.path}/sign-up/`}
             component={signupComponent}
           />
-          <Route
-            path={`${this.props.match.path}/sign-in/`}
-            component={signinComponent}
-          />
+          <SignInComponent
+            showModal={this.state.showSignInModal}
+            onChange={this.handleChange}
+          ></SignInComponent>
         </div>
       );
     } else {
