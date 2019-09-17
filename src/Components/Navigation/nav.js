@@ -5,7 +5,7 @@ import Tab from "@material-ui/core/Tab";
 import { Route, Link } from "react-router-dom";
 import * as Routes from "../../constants/routes";
 import { HomeComponent } from "../Pages/Home";
-import { AccountPage } from "../Pages/AccountPage";
+import AccountPage from "../Pages/AccountPage";
 import { AdminComponent } from "../Pages/Admin";
 import { ContactComponent } from "../Pages/Contact";
 import { CounterPage } from "../Pages/CounterParent";
