@@ -15,7 +15,7 @@ export class SignInComponent extends React.Component {
     return (
       <Modal open={this.props.showModal} handleClose={this.handleClose}>
         <div>
-          <h2>Text in a modal</h2>
+          <h2>Sign in Form</h2>
           <p>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </p>

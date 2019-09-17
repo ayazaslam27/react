@@ -1,24 +1,38 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Route, Link } from "react-router-dom";
 import MaterialLink from "@material-ui/core/Link";
 import { SignInComponent } from "./SignIn";
-import signupComponent from "./SignUp";
+import { SignUpComponent } from "./SignUp";
 
 class AccountPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showSignInModal: false };
-    this.showSignInForm = this.showSignInForm.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+
+    this.state = {
+      showSignInModal: false,
+      showSignupModal: false
+    };
+
+    this.showSignInModal = this.showSignInModal.bind(this);
+    this.showSignUpModal = this.showSignUpModal.bind(this);
+    this.handleSignInModalChange = this.handleSignInModalChange.bind(this);
+    this.handleSignUpModalChange = this.handleSignUpModalChange.bind(this);
   }
 
-  showSignInForm() {
-    this.setState({ showSignInModal: true });
+  showSignInModal() {
+    this.setState({ showSignInModal: true, showSignupModal: false });
   }
 
-  handleChange(showModal) {
+  showSignUpModal() {
+    this.setState({ showSignInModal: false, showSignupModal: true });
+  }
+
+  handleSignInModalChange(showModal) {
     this.setState({ showSignInModal: showModal });
+  }
+
+  handleSignUpModalChange(showModal) {
+    this.setState({ showSignupModal: showModal });
   }
 
   render() {
@@ -27,17 +41,20 @@ class AccountPage extends React.Component {
       task = (
         <div>
           You are not logged in. Please{" "}
-          <MaterialLink onClick={this.showSignInForm}>sign in </MaterialLink>
+          <MaterialLink onClick={this.showSignInModal}>sign in </MaterialLink>
           still don't have an account{" "}
-          <Link to={`${this.props.match.url}/sign-up`}>sign up</Link> with us
-          <Route
-            path={`${this.props.match.path}/sign-up/`}
-            component={signupComponent}
-          />
+          <MaterialLink onClick={this.showSignUpModal}>
+            sign up{" "}
+          </MaterialLink>{" "}
+          with us
           <SignInComponent
             showModal={this.state.showSignInModal}
-            onChange={this.handleChange}
+            onChange={this.handleSignInModalChange}
           ></SignInComponent>
+          <SignUpComponent
+            showModal={this.state.showSignupModal}
+            onChange={this.handleSignUpModalChange}
+          ></SignUpComponent>
         </div>
       );
     } else {
