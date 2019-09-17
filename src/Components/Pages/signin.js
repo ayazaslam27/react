@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Modal from "../Modal/modal";
 
 export class SignInComponent extends React.Component {
@@ -24,3 +25,8 @@ export class SignInComponent extends React.Component {
     );
   }
 }
+
+SignInComponent.propTypes = {
+  showModal: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired
+};

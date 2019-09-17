@@ -42,7 +42,7 @@ class AccountPage extends React.Component {
         <div>
           You are not logged in. Please{" "}
           <MaterialLink onClick={this.showSignInModal}>sign in </MaterialLink>
-          still don't have an account{" "}
+          or if you still don't have an account{" "}
           <MaterialLink onClick={this.showSignUpModal}>
             sign up{" "}
           </MaterialLink>{" "}
