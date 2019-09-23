@@ -13,17 +13,17 @@ class AccountPage extends React.Component {
       showSignupModal: false
     };
 
-    this.showSignInModal = this.showSignInModal.bind(this);
-    this.showSignUpModal = this.showSignUpModal.bind(this);
+    this.handleSignInModal = this.handleSignInModal.bind(this);
+    this.handleSignupModal = this.handleSignupModal.bind(this);
     this.handleSignInModalChange = this.handleSignInModalChange.bind(this);
     this.handleSignUpModalChange = this.handleSignUpModalChange.bind(this);
   }
 
-  showSignInModal() {
+  handleSignInModal() {
     this.setState({ showSignInModal: true, showSignupModal: false });
   }
 
-  showSignUpModal() {
+  handleSignupModal() {
     this.setState({ showSignInModal: false, showSignupModal: true });
   }
 
@@ -41,9 +41,9 @@ class AccountPage extends React.Component {
       task = (
         <div>
           You are not logged in. Please{" "}
-          <MaterialLink onClick={this.showSignInModal}>sign in </MaterialLink>
+          <MaterialLink onClick={this.handleSignInModal}>sign in </MaterialLink>
           or if you still don't have an account{" "}
-          <MaterialLink onClick={this.showSignUpModal}>
+          <MaterialLink onClick={this.handleSignupModal}>
             sign up{" "}
           </MaterialLink>{" "}
           with us
