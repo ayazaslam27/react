@@ -45,6 +45,7 @@ class AccountPage extends React.Component {
     if (!this.props.authUser) {
       task = (
         <div>
+          <h1>Account</h1>
           You are not logged in. Please{" "}
           <MaterialLink onClick={this.handleSignInModal}>sign in </MaterialLink>
           or if you still don't have an account{" "}

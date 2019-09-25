@@ -7,7 +7,7 @@ import * as Routes from "../../constants/routes";
 import HomeComponent from "../Pages/Home";
 import AccountPage from "../Pages/AccountPage";
 import DashboardComponent from "../Pages/Dashboard";
-import ContactComponent from "../Pages/Contact";
+import DatabaseComponent from "../Pages/Database";
 import CounterPage from "../Pages/CounterParent";
 import { connect } from "react-redux";
 
@@ -30,8 +30,8 @@ function NavigationComponent({ authUser, activePage }) {
       ></Tab>
       <Tab
         index={3}
-        label="Contact"
-        to={Routes.CONTACT}
+        label="DatabaseComponent"
+        to={Routes.DATABASE}
         value={3}
         component={Link}
       ></Tab>
@@ -70,8 +70,8 @@ function NavigationComponent({ authUser, activePage }) {
       ></Tab>
       <Tab
         index={3}
-        label="Contact"
-        to={Routes.CONTACT}
+        label="Database"
+        to={Routes.DATABASE}
         value={3}
         component={Link}
       ></Tab>
@@ -93,7 +93,7 @@ function NavigationComponent({ authUser, activePage }) {
       <Route exact path={Routes.HOME} component={HomeComponent} />
       <Route path={Routes.ACCOUNT} component={AccountPage} />
       <Route path={Routes.DASHBOARD} component={DashboardComponent} />
-      <Route path={Routes.CONTACT} component={ContactComponent} />
+      <Route path={Routes.DATABASE} component={DatabaseComponent} />
       <Route path={Routes.COUNTER} component={CounterPage} />
     </div>
   );
