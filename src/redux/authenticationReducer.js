@@ -8,7 +8,7 @@ function rootReducer(state = initialState, action) {
   if (action.type === USER_AUTHORISED) {
     return {
       ...state,
-      isUserLoggedIn: !state.isUserLoggedIn
+      isUserLoggedIn: action.payload.isUserAuthorized
     };
   }
 

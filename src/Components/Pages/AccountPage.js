@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import MaterialLink from "@material-ui/core/Link";
-import { SignInComponent } from "./SignIn";
-import { SignUpComponent } from "./SignUp";
+import SignInComponent from "./SignIn";
+import SignUpComponent from "./SignUp";
 
 class AccountPage extends React.Component {
   constructor(props) {
