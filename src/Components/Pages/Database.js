@@ -46,7 +46,7 @@ class DatabaseComponent extends React.Component {
     const { name, message, error } = this.state;
 
     const isInvalid = name === "" || message === "";
-
+    const rows = [];
     return (
       <div>
         <h1>Database</h1>
@@ -94,7 +94,7 @@ class DatabaseComponent extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.firebase.messages.map(row => (
+              {rows.map(row => (
                 <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
                     {row.name}

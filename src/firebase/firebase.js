@@ -95,14 +95,14 @@ class Firebase {
 
   addMessage = payload => {
     return new Promise((resolve, reject) => {
-      this.database
-        .ref("messages")
+      var messageReference = this.database.ref("messages").push(payload);
+      messageReference
         .set(payload)
-        .then(function(auth) {
-          resolve(auth);
+        .then(() => {
+          resolve();
         })
-        .catch(function(error) {
-          reject(error);
+        .catch(() => {
+          reject();
         })
         .then(function() {});
     });

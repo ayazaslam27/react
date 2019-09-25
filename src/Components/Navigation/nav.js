@@ -30,7 +30,7 @@ function NavigationComponent({ authUser, activePage }) {
       ></Tab>
       <Tab
         index={3}
-        label="DatabaseComponent"
+        label="Database"
         to={Routes.DATABASE}
         value={3}
         component={Link}
