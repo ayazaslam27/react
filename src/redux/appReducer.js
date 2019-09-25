@@ -1,5 +1,5 @@
 const initialState = {
-  activePage: 0
+  activePage: 1
 };
 
 function appReducer(state = initialState, action) {

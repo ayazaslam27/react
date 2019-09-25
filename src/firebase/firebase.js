@@ -90,6 +90,23 @@ class Firebase {
 
   user = uid => this.database.ref(`users/${uid}`);
   users = () => this.database.ref("users");
+
+  messages = () => this.database.ref("messages");
+
+  addMessage = payload => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref("messages")
+        .set(payload)
+        .then(function(auth) {
+          resolve(auth);
+        })
+        .catch(function(error) {
+          reject(error);
+        })
+        .then(function() {});
+    });
+  };
 }
 
 export default Firebase;

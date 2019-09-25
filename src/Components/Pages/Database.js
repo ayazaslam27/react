@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setActivePage } from "../../redux/actions";
+import { withFirebase } from "../../firebase/index";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -29,17 +30,22 @@ class DatabaseComponent extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  addMessage = event => {
+    this.props.firebase
+      .addMessage({ name: this.state.name, message: this.state.message })
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    event.preventDefault();
+  };
+
   render() {
     const { name, message, error } = this.state;
 
     const isInvalid = name === "" || message === "";
-
-    const rows = [
-      { name: "Jhon", message: "Abra Kadabra" },
-      { name: "Jhon", message: "Abra Kadabra" },
-      { name: "Jhon", message: "Abra Kadabra" },
-      { name: "Jhon", message: "Abra Kadabra" }
-    ];
 
     return (
       <div>
@@ -74,6 +80,7 @@ class DatabaseComponent extends React.Component {
             variant="contained"
             color="primary"
             disabled={isInvalid}
+            onClick={this.addMessage}
           >
             Send
           </Button>
@@ -87,7 +94,7 @@ class DatabaseComponent extends React.Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(row => (
+              {this.props.firebase.messages.map(row => (
                 <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
                     {row.name}
@@ -112,4 +119,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   null,
   mapDispatchToProps
-)(DatabaseComponent);
+)(withFirebase(DatabaseComponent));
