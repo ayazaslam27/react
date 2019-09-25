@@ -6,7 +6,7 @@ export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
 export const MAXCOUNTER = "MAX_COUNTER";
 export const MINCOUNTER = "MIN_COUNTER";
-export const USER_AUTHORISED = "USER_AUTHORISED";
+export const AUTH_USER_SET = "AUTH_USER_SET";
 
 /*
  * action creators
@@ -28,6 +28,6 @@ export function minCounter() {
   return { type: MINCOUNTER };
 }
 
-export function setAuthorization(payload) {
-  return { type: USER_AUTHORISED, payload };
+export function setAuthorization(authUser) {
+  return { type: AUTH_USER_SET, authUser };
 }

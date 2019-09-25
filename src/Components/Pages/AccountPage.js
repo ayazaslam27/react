@@ -37,7 +37,7 @@ class AccountPage extends React.Component {
 
   render() {
     let task;
-    if (!this.props.isUserLoggedIn) {
+    if (!this.props.authUser) {
       task = (
         <div>
           You are not logged in. Please{" "}
@@ -67,7 +67,7 @@ class AccountPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    isUserLoggedIn: state.auth.isUserLoggedIn
+    authUser: state.auth.authUser
   };
 }
 

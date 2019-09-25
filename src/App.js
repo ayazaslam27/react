@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Navigation from "./Components/Navigation/nav";
+import withAuthentication from "./Session/authentication";
 
 function App() {
   return (
@@ -13,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthentication(App);

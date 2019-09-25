@@ -1,14 +1,14 @@
-import { USER_AUTHORISED } from "./actions";
+import { AUTH_USER_SET } from "./actions";
 
 const initialState = {
-  isUserLoggedIn: false
+  authUser: {}
 };
 
 function rootReducer(state = initialState, action) {
-  if (action.type === USER_AUTHORISED) {
+  if (action.type === AUTH_USER_SET) {
     return {
       ...state,
-      isUserLoggedIn: action.payload.isUserAuthorized
+      authUser: action.authUser
     };
   }
 

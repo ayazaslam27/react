@@ -28,7 +28,7 @@ class SignInComponent extends React.Component {
     this.props.firebase
       .signInWithEmailAndPassword(email, password)
       .then(authUser => {
-        this.props.setAuthorization({ isUserAuthorized: true });
+        this.props.onSetAuthorization(authUser);
       })
       .catch(error => {
         this.setState({ error });
@@ -91,7 +91,7 @@ class SignInComponent extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setAuthorization: payload => dispatch(setAuthorization(payload))
+    onSetAuthorization: authUser => dispatch(setAuthorization(authUser))
   };
 }
 

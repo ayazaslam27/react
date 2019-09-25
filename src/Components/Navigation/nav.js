@@ -11,7 +11,7 @@ import { ContactComponent } from "../Pages/Contact";
 import { CounterPage } from "../Pages/CounterParent";
 import { connect } from "react-redux";
 
-function NavigationComponent({ isUserLoggedIn }) {
+function NavigationComponent({ authUser }) {
   const [value, setValue] = React.useState(1);
 
   function handleChange(event, newValue) {
@@ -94,7 +94,7 @@ function NavigationComponent({ isUserLoggedIn }) {
   return (
     <div>
       <AppBar color="primary" position="static">
-        {isUserLoggedIn ? NavigationAuth : NavigationNonAuth}
+        {authUser ? NavigationAuth : NavigationNonAuth}
       </AppBar>
       <Route exact path={Routes.HOME} component={HomeComponent} />
       <Route path={Routes.ACCOUNT} component={AccountPage} />
@@ -107,7 +107,7 @@ function NavigationComponent({ isUserLoggedIn }) {
 
 function mapStateToProps(state) {
   return {
-    isUserLoggedIn: state.auth.isUserLoggedIn
+    authUser: state.auth.authUser
   };
 }
 
