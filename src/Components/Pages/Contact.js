@@ -1,6 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+import { setActivePage } from "../../redux/actions";
 
-export class ContactComponent extends React.Component {
+class ContactComponent extends React.Component {
+  componentDidMount() {
+    this.props.onSetActivePage(3);
+  }
+
   render() {
     return (
       <div>
@@ -10,3 +16,14 @@ export class ContactComponent extends React.Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onSetActivePage: activePage => dispatch(setActivePage(activePage))
+  };
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ContactComponent);

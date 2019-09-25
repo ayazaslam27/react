@@ -4,22 +4,16 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { Route, Link } from "react-router-dom";
 import * as Routes from "../../constants/routes";
-import { HomeComponent } from "../Pages/Home";
+import HomeComponent from "../Pages/Home";
 import AccountPage from "../Pages/AccountPage";
 import DashboardComponent from "../Pages/Dashboard";
-import { ContactComponent } from "../Pages/Contact";
-import { CounterPage } from "../Pages/CounterParent";
+import ContactComponent from "../Pages/Contact";
+import CounterPage from "../Pages/CounterParent";
 import { connect } from "react-redux";
 
-function NavigationComponent({ authUser }) {
-  const [value, setValue] = React.useState(1);
-
-  function handleChange(event, newValue) {
-    setValue(newValue);
-  }
-
+function NavigationComponent({ authUser, activePage }) {
   const NavigationAuth = (
-    <Tabs centered value={value} onChange={handleChange}>
+    <Tabs centered value={activePage}>
       <Tab
         label="Home"
         to={Routes.HOME}
@@ -35,31 +29,31 @@ function NavigationComponent({ authUser }) {
         index={2}
       ></Tab>
       <Tab
-        label="Dashboard"
-        to={Routes.DASHBOARD}
+        index={3}
+        label="Contact"
+        to={Routes.CONTACT}
         value={3}
         component={Link}
-        index={3}
       ></Tab>
       <Tab
         index={4}
-        label="Contact"
-        to={Routes.CONTACT}
+        label="Counter"
+        to={Routes.COUNTER}
         value={4}
         component={Link}
       ></Tab>
       <Tab
-        index={5}
-        label="Counter"
-        to={Routes.COUNTER}
+        label="Dashboard"
+        to={Routes.DASHBOARD}
         value={5}
         component={Link}
+        index={5}
       ></Tab>
     </Tabs>
   );
 
   const NavigationNonAuth = (
-    <Tabs centered value={value} onChange={handleChange}>
+    <Tabs centered value={activePage}>
       <Tab
         label="Home"
         to={Routes.HOME}
@@ -107,8 +101,8 @@ function NavigationComponent({ authUser }) {
 
 function mapStateToProps(state) {
   return {
-    authUser: state.auth.authUser
+    authUser: state.auth.authUser,
+    activePage: state.app.activePage
   };
 }
-
 export default connect(mapStateToProps)(NavigationComponent);

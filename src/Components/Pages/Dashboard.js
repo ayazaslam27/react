@@ -3,9 +3,13 @@ import withAuthorization from "../../Session/authorization";
 import MaterialLink from "@material-ui/core/Link";
 import { store } from "../../redux/store";
 import { connect } from "react-redux";
-import { setAuthorization } from "../../redux/actions";
+import { setAuthorization, setActivePage } from "../../redux/actions";
 
 class DashboardComponent extends React.Component {
+  componentDidMount() {
+    this.props.onSetActivePage(5);
+  }
+
   handleSignOut = event => {
     this.props.firebase
       .signOut()
@@ -35,7 +39,8 @@ class DashboardComponent extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSetAuthorization: authUser => dispatch(setAuthorization(authUser))
+    onSetAuthorization: authUser => dispatch(setAuthorization(authUser)),
+    onSetActivePage: activePage => dispatch(setActivePage(activePage))
   };
 }
 

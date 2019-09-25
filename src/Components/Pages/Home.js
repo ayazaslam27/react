@@ -1,6 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
+import { setActivePage } from "../../redux/actions";
 
-export class HomeComponent extends React.Component {
+class HomeComponent extends React.Component {
+  componentDidMount() {
+    this.props.onSetActivePage(1);
+  }
+
   render() {
     return (
       <div>
@@ -10,3 +16,14 @@ export class HomeComponent extends React.Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onSetActivePage: activePage => dispatch(setActivePage(activePage))
+  };
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(HomeComponent);

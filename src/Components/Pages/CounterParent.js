@@ -1,8 +1,14 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { setActivePage } from "../../redux/actions";
 import counter from "./Counter";
 
-export class CounterPage extends React.Component {
+class CounterPage extends React.Component {
+  componentDidMount() {
+    this.props.onSetActivePage(4);
+  }
+
   render() {
     return (
       <div>
@@ -21,3 +27,14 @@ export class CounterPage extends React.Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onSetActivePage: activePage => dispatch(setActivePage(activePage))
+  };
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CounterPage);

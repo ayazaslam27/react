@@ -7,6 +7,7 @@ export const DECREMENT = "DECREMENT";
 export const MAXCOUNTER = "MAX_COUNTER";
 export const MINCOUNTER = "MIN_COUNTER";
 export const AUTH_USER_SET = "AUTH_USER_SET";
+export const ACTIVE_PAGE = "ACTIVE_PAGE";
 
 /*
  * action creators
@@ -30,4 +31,8 @@ export function minCounter() {
 
 export function setAuthorization(authUser) {
   return { type: AUTH_USER_SET, authUser };
+}
+
+export function setActivePage(activePage) {
+  return { type: ACTIVE_PAGE, activePage };
 }

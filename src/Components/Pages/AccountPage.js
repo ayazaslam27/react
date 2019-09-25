@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import MaterialLink from "@material-ui/core/Link";
 import SignInComponent from "./SignIn";
 import SignUpComponent from "./SignUp";
+import { setActivePage } from "../../redux/actions";
 
 class AccountPage extends React.Component {
   constructor(props) {
@@ -17,6 +18,10 @@ class AccountPage extends React.Component {
     this.handleSignupModal = this.handleSignupModal.bind(this);
     this.handleSignInModalChange = this.handleSignInModalChange.bind(this);
     this.handleSignUpModalChange = this.handleSignUpModalChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.onSetActivePage(2);
   }
 
   handleSignInModal() {
@@ -71,4 +76,13 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(AccountPage);
+function mapDispatchToProps(dispatch) {
+  return {
+    onSetActivePage: activePage => dispatch(setActivePage(activePage))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AccountPage);
