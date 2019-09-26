@@ -26,12 +26,19 @@ class SignUpComponent extends React.Component {
 
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;
+    //if username starts with alphabet A, Admin role is automatically assigned else Observer
+    let role = this.getRole(username);
+
     this.props.firebase
       .createUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         this.props.firebase.user(authUser.user.uid).set({
           username,
-          email
+          email,
+          role
+        });
+        authUser.user.updateProfile({
+          displayName: username
         });
         alert("Signup successfull");
         this.handleClose();
@@ -40,6 +47,14 @@ class SignUpComponent extends React.Component {
         this.setState({ error });
       });
     event.preventDefault();
+  };
+
+  getRole = username => {
+    if (username.startsWith("A") || username.startsWith("a")) {
+      return "Admin";
+    } else {
+      return "Observer";
+    }
   };
 
   onChange = event => {

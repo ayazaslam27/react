@@ -11,6 +11,7 @@ class DashboardComponent extends React.Component {
   }
 
   handleSignOut = event => {
+    this.props.onSetActivePage(2);
     this.props.firebase
       .signOut()
       .then(authUser => {

@@ -64,7 +64,7 @@ class AccountPage extends React.Component {
         </div>
       );
     } else {
-      task = <h3>Welcome</h3>;
+      task = <h3>Welcome {this.props.authUser.displayName}</h3>;
     }
 
     return task;

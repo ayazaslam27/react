@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
 import { withFirebase } from "../firebase/index";
+
 const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     constructor(props) {
@@ -21,6 +22,7 @@ const withAuthentication = Component => {
         }
       );
     }
+
     componentWillUnmount() {
       this.listener();
     }

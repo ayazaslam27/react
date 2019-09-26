@@ -1,5 +1,7 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { Route, Link } from "react-router-dom";
@@ -10,10 +12,25 @@ import DashboardComponent from "../Pages/Dashboard";
 import DatabaseComponent from "../Pages/Database";
 import CounterPage from "../Pages/CounterParent";
 import { connect } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
 
-function NavigationComponent({ authUser, activePage }) {
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  }
+}));
+
+function NavigationBar({ activePage, authUser }) {
+  const classes = useStyles();
+
   const NavigationAuth = (
-    <Tabs centered value={activePage}>
+    <Tabs centered value={activePage} className={classes.title}>
       <Tab
         label="Home"
         to={Routes.HOME}
@@ -53,7 +70,7 @@ function NavigationComponent({ authUser, activePage }) {
   );
 
   const NavigationNonAuth = (
-    <Tabs centered value={activePage}>
+    <Tabs centered value={activePage} className={classes.title}>
       <Tab
         label="Home"
         to={Routes.HOME}
@@ -87,8 +104,11 @@ function NavigationComponent({ authUser, activePage }) {
 
   return (
     <div>
-      <AppBar color="primary" position="static">
-        {authUser ? NavigationAuth : NavigationNonAuth}
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6">React Demo App</Typography>
+          {authUser ? NavigationAuth : NavigationNonAuth}
+        </Toolbar>
       </AppBar>
       <Route exact path={Routes.HOME} component={HomeComponent} />
       <Route path={Routes.ACCOUNT} component={AccountPage} />
@@ -105,4 +125,4 @@ function mapStateToProps(state) {
     activePage: state.app.activePage
   };
 }
-export default connect(mapStateToProps)(NavigationComponent);
+export default connect(mapStateToProps)(NavigationBar);

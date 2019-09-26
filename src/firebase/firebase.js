@@ -95,14 +95,31 @@ class Firebase {
 
   addMessage = payload => {
     return new Promise((resolve, reject) => {
-      var messageReference = this.database.ref("messages").push(payload);
+      var messageReference = this.database.ref("messages").push();
       messageReference
         .set(payload)
         .then(() => {
           resolve();
         })
-        .catch(() => {
-          reject();
+        .catch(error => {
+          reject(error);
+        })
+        .then(function() {});
+    });
+  };
+
+  getLatest10Messages = () => {
+    return new Promise((resolve, reject) => {
+      this.database
+        .ref("messages/")
+        .orderByKey()
+        .limitToLast(10)
+        .once("value")
+        .then(snapshot => {
+          resolve(snapshot);
+        })
+        .catch(error => {
+          reject(error);
         })
         .then(function() {});
     });
