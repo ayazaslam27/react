@@ -1,5 +1,5 @@
 export const HOME = "/";
-export const ACCOUNT = "/account";
+export const AUTHENTICATION = "/authentication";
 export const DASHBOARD = "/dashboard";
-export const DATABASE = "/database";
-export const COUNTER = "/counter";
+export const AUTHORISATION = "/authorisation";
+export const MIDDLEWARE = "/middleware";

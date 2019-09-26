@@ -6,13 +6,14 @@ import Modal from "../Modal/modal";
 import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { withTranslation } from "react-i18next";
 
 const INITIAL_STATE = {
   email: "",
   password: ""
 };
 
-class SignInComponent extends React.Component {
+class SignInModal extends React.Component {
   constructor(props) {
     super(props);
     this.handleClose = this.handleClose.bind(this);
@@ -45,6 +46,7 @@ class SignInComponent extends React.Component {
 
     const isInvalid = password === "" || email === "";
 
+    const { t } = this.props;
     return (
       <Modal open={this.props.showModal} handleClose={this.handleClose}>
         <h2>Sign in</h2>
@@ -56,7 +58,7 @@ class SignInComponent extends React.Component {
             fullWidth
             value={email}
             onChange={this.onChange}
-            label="Email Address"
+            label={t("sign-in.email")}
             name="email"
             autoComplete="email"
             autoFocus
@@ -69,7 +71,7 @@ class SignInComponent extends React.Component {
             value={password}
             onChange={this.onChange}
             name="password"
-            label="Password"
+            label={t("sign-in.password")}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -95,7 +97,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-SignInComponent.propTypes = {
+SignInModal.propTypes = {
   showModal: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired
 };
@@ -103,4 +105,4 @@ SignInComponent.propTypes = {
 export default connect(
   null,
   mapDispatchToProps
-)(withFirebase(SignInComponent));
+)(withFirebase(withTranslation()(SignInModal)));

@@ -6,13 +6,14 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { Route, Link } from "react-router-dom";
 import * as Routes from "../../constants/routes";
-import HomeComponent from "../Pages/Home";
-import AccountPage from "../Pages/AccountPage";
-import DashboardComponent from "../Pages/Dashboard";
-import DatabaseComponent from "../Pages/Database";
-import CounterPage from "../Pages/CounterParent";
+import HomePage from "../Pages/HomePage";
+import AuthenticationPage from "../Pages/AuthenticationPage";
+import DashboardPage from "../Pages/DashboardPage";
+import AuthorisationPage from "../Pages/AuthorisationPage";
+import MiddlewarePage from "../Pages/MiddlewarePage";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
+import { withTranslation } from "react-i18next";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,41 +27,41 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function NavigationBar({ activePage, authUser }) {
+function NavigationBar({ activePage, authUser, t }) {
   const classes = useStyles();
 
   const NavigationAuth = (
     <Tabs centered value={activePage} className={classes.title}>
       <Tab
-        label="Home"
+        label={t("home.title")}
         to={Routes.HOME}
         value={1}
         component={Link}
         index={1}
       ></Tab>
       <Tab
-        label="Account"
-        to={Routes.ACCOUNT}
+        label={t("Authentication.title")}
+        to={Routes.AUTHENTICATION}
         value={2}
         component={Link}
         index={2}
       ></Tab>
       <Tab
         index={3}
-        label="Database"
-        to={Routes.DATABASE}
+        label={t("Authorisation.title")}
+        to={Routes.AUTHORISATION}
         value={3}
         component={Link}
       ></Tab>
       <Tab
         index={4}
-        label="Counter"
-        to={Routes.COUNTER}
+        label={t("Middleware.title")}
+        to={Routes.MIDDLEWARE}
         value={4}
         component={Link}
       ></Tab>
       <Tab
-        label="Dashboard"
+        label={t("Dashboard.title")}
         to={Routes.DASHBOARD}
         value={5}
         component={Link}
@@ -72,30 +73,30 @@ function NavigationBar({ activePage, authUser }) {
   const NavigationNonAuth = (
     <Tabs centered value={activePage} className={classes.title}>
       <Tab
-        label="Home"
+        label={t("home.title")}
         to={Routes.HOME}
         value={1}
         component={Link}
         index={1}
       ></Tab>
       <Tab
-        label="Account"
-        to={Routes.ACCOUNT}
+        label={t("Authentication.title")}
+        to={Routes.AUTHENTICATION}
         value={2}
         component={Link}
         index={2}
       ></Tab>
       <Tab
         index={3}
-        label="Database"
-        to={Routes.DATABASE}
+        label={t("Authorisation.title")}
+        to={Routes.AUTHORISATION}
         value={3}
         component={Link}
       ></Tab>
       <Tab
         index={4}
-        label="Counter"
-        to={Routes.COUNTER}
+        label={t("Middleware.title")}
+        to={Routes.MIDDLEWARE}
         value={4}
         component={Link}
       ></Tab>
@@ -106,15 +107,15 @@ function NavigationBar({ activePage, authUser }) {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6">React Demo App</Typography>
+          <Typography variant="h6">App</Typography>
           {authUser ? NavigationAuth : NavigationNonAuth}
         </Toolbar>
       </AppBar>
-      <Route exact path={Routes.HOME} component={HomeComponent} />
-      <Route path={Routes.ACCOUNT} component={AccountPage} />
-      <Route path={Routes.DASHBOARD} component={DashboardComponent} />
-      <Route path={Routes.DATABASE} component={DatabaseComponent} />
-      <Route path={Routes.COUNTER} component={CounterPage} />
+      <Route exact path={Routes.HOME} component={HomePage} />
+      <Route path={Routes.AUTHENTICATION} component={AuthenticationPage} />
+      <Route path={Routes.DASHBOARD} component={DashboardPage} />
+      <Route path={Routes.AUTHORISATION} component={AuthorisationPage} />
+      <Route path={Routes.MIDDLEWARE} component={MiddlewarePage} />
     </div>
   );
 }
@@ -125,4 +126,4 @@ function mapStateToProps(state) {
     activePage: state.app.activePage
   };
 }
-export default connect(mapStateToProps)(NavigationBar);
+export default connect(mapStateToProps)(withTranslation()(NavigationBar));

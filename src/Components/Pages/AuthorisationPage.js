@@ -10,13 +10,15 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import { withTranslation } from "react-i18next";
 
 const INITIAL_STATE = {
   name: "",
   message: ""
 };
 const messages = [];
-class DatabaseComponent extends React.Component {
+
+class AuthorisationPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...INITIAL_STATE, messages };
@@ -84,11 +86,11 @@ class DatabaseComponent extends React.Component {
 
   render() {
     const { name, message, error } = this.state;
-
+    const { t } = this.props;
     const isInvalid = name === "" || message === "";
     return (
       <div>
-        <h1>Database</h1>
+        <h1>{t("Authorisation.title")}</h1>
         <Container maxWidth="sm">
           <TextField
             fullWidth
@@ -97,7 +99,7 @@ class DatabaseComponent extends React.Component {
             required
             value={name}
             onChange={this.onChange}
-            label="Your name"
+            label={t("Authorisation.your-name")}
             name="name"
             autoComplete="name"
             autoFocus
@@ -109,7 +111,7 @@ class DatabaseComponent extends React.Component {
             required
             value={message}
             onChange={this.onChange}
-            label="Your message"
+            label={t("Authorisation.your-message")}
             name="message"
             autoComplete="message"
             autoFocus
@@ -121,15 +123,15 @@ class DatabaseComponent extends React.Component {
             disabled={isInvalid}
             onClick={this.addMessage}
           >
-            Send
+            {t("Authorisation.send")}
           </Button>
           {error && <p>{error.message}</p>}
 
           <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell align="left">Message</TableCell>
+                <TableCell>{t("Authorisation.name")}</TableCell>
+                <TableCell align="left">{t("Authorisation.message")}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -158,4 +160,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   null,
   mapDispatchToProps
-)(withFirebase(DatabaseComponent));
+)(withFirebase(withTranslation()(AuthorisationPage)));

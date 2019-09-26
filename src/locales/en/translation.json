@@ -1,0 +1,44 @@
+{
+  "Welcome": "Welcome",
+  "home": {
+    "title": "Home",
+    "description-main": "A React-Redux-Firebase demo app",
+    "text1": "This app uses",
+    "text2": "and further explains concept of protected and nested routing, redux, firebase authentication and authorisation access to the certain part of the app using realtime database rules associated with user roles."
+  },
+  "Authentication": {
+    "title": "Authentication",
+    "description": "Firebase-Authentication",
+    "text1": "You are on not logged in. Please",
+    "text2": "or if you still don't have an account",
+    "text3": "with us"
+  },
+  "Authorisation": {
+    "title": "Authorisation",
+    "your-name": "Your Name",
+    "your-message": "Your message",
+    "name": "Name",
+    "message": "Message",
+    "send": "Send"
+  },
+  "Middleware": {
+    "title": "Middleware",
+    "description": "This page will demonstrate the concept of nested routing with react-router and redux middleware.",
+    "child-route": "This is a nested route. Click on it and oberve the url in the browser",
+    "description2": "Counts from -5 to 5 using redux middleware."
+  },
+  "Dashboard": {
+    "title": "Protected",
+    "description": "This is an example of a protected route. If you are logged in (which is assumed as if you are authenticated) you will have access to this page. Try signing out and access the url in the browser"
+  },
+  "sign-up": {
+    "username": "Username",
+    "email": "Email address",
+    "password": "Password",
+    "confirm-password": "Confirm password"
+  },
+  "sign-in": {
+    "email": "Email address",
+    "password": "Password"
+  }
+}

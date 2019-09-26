@@ -1,0 +1,44 @@
+{
+  "Welcome": "Willkommen",
+  "home": {
+    "title": "Zuhause",
+    "description-main": "Ein React-Redux-Firebase demo app",
+    "text1": "Diese App verwendet",
+    "text2": "Außerdem wird das Konzept von geschütztem und verschachteltem Routing, Redux, Firebase-Authentifizierung und Autorisierungszugriff auf den bestimmten Teil der App unter Verwendung von Echtzeit-Datenbankregeln erläutert, die Benutzerrollen zugeordnet sind."
+  },
+  "Authentication": {
+    "title": "Authentication",
+    "description": "Firebase-Authentication",
+    "text1": "Sie sind nicht angemeldet. Bitte",
+    "text2": "oder wenn Sie noch keinen Account haben",
+    "text3": "mit uns."
+  },
+  "Authorisation": {
+    "title": "Authorisation",
+    "your-name": "Ihre Name",
+    "your-message": "Ihre Nachricht",
+    "name": "Name",
+    "message": "Nachricht",
+    "send": "Senden"
+  },
+  "Middleware": {
+    "title": "Middleware",
+    "description": "Diese Seite zeigt das Konzept des verschachtelten Routings mit React-Router- und Redux-Middleware.",
+    "child-route": "Dies ist eine verschachtelte Route. Klicken Sie darauf und beobachten Sie die URL im Browser",
+    "description2": "Zählt mit Redux-Middleware von -5 bis 5."
+  },
+  "Dashboard": {
+    "title": "Geschützt",
+    "description": "Dies ist ein Beispiel für eine geschützte Route. Wenn Sie angemeldet sind (was als authentifiziert vorausgesetzt wird), haben Sie Zugriff auf diese Seite. Melden Sie sich ab und greifen Sie im Browser auf die URL zu"
+  },
+  "sign-up": {
+    "username": "Username",
+    "email": "Email addresse",
+    "password": "Passwort",
+    "confirm-password": "Passwort bestätigen"
+  },
+  "sign-in": {
+    "email": "Email addresse",
+    "password": "Passwort"
+  }
+}

@@ -2,26 +2,25 @@ import React from "react";
 import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setActivePage } from "../../redux/actions";
-import counter from "./Counter";
+import MiddlewarePageChild from "./MiddlewarePageChild";
+import { withTranslation } from "react-i18next";
 
-class CounterPage extends React.Component {
+class MiddlewarePage extends React.Component {
   componentDidMount() {
     this.props.onSetActivePage(4);
   }
 
   render() {
+    const { t } = this.props;
     return (
       <div>
-        <h1>Counter</h1>
-        <p>You are on counter page.</p>
-        <Link
-          to={`${this.props.match.url}/A Counter that counts from -5  to 5 using redux concepts (middleware) and nested routes`}
-        >
-          Counter
-        </Link>
+        <h1>{t("Middleware.title")}</h1>
+        <p>{t("Middleware.description")}</p>
+        <p>{t("Middleware.child-route")}</p>
+        <Link to={`${this.props.match.url}/nested-route`}>Child-route</Link>
         <Route
           path={`${this.props.match.path}/:passingProps/`}
-          component={counter}
+          component={MiddlewarePageChild}
         />
       </div>
     );
@@ -37,4 +36,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   null,
   mapDispatchToProps
-)(CounterPage);
+)(withTranslation()(MiddlewarePage));

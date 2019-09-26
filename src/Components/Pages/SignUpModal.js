@@ -4,6 +4,7 @@ import Modal from "../Modal/modal";
 import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { withTranslation } from "react-i18next";
 
 const INITIAL_STATE = {
   username: "",
@@ -13,7 +14,7 @@ const INITIAL_STATE = {
   error: null
 };
 
-class SignUpComponent extends React.Component {
+class SignUpModal extends React.Component {
   constructor(props) {
     super(props);
     this.handleClose = this.handleClose.bind(this);
@@ -69,6 +70,7 @@ class SignUpComponent extends React.Component {
       email === "" ||
       username === "";
 
+    const { t } = this.props;
     return (
       <Modal open={this.props.showModal} handleClose={this.handleClose}>
         <h2>Sign up</h2>
@@ -80,7 +82,7 @@ class SignUpComponent extends React.Component {
             fullWidth
             value={username}
             onChange={this.onChange}
-            label="Username"
+            label={t("sign-up.username")}
             name="username"
             autoComplete="username"
             autoFocus
@@ -92,7 +94,7 @@ class SignUpComponent extends React.Component {
             fullWidth
             value={email}
             onChange={this.onChange}
-            label="Email Address"
+            label={t("sign-up.email")}
             name="email"
             autoComplete="email"
             autoFocus
@@ -105,7 +107,7 @@ class SignUpComponent extends React.Component {
             value={passwordOne}
             onChange={this.onChange}
             name="passwordOne"
-            label="Password"
+            label={t("sign-up.password")}
             type="password"
             id="passwordOne"
             autoComplete="current-password"
@@ -118,7 +120,7 @@ class SignUpComponent extends React.Component {
             value={passwordTwo}
             onChange={this.onChange}
             name="passwordTwo"
-            label="Repeat password"
+            label={t("sign-up.confirm-password")}
             type="password"
             id="passwordTwo"
             autoComplete="current-password"
@@ -138,9 +140,9 @@ class SignUpComponent extends React.Component {
   }
 }
 
-SignUpComponent.propTypes = {
+SignUpModal.propTypes = {
   showModal: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired
 };
 
-export default withFirebase(SignUpComponent);
+export default withFirebase(withTranslation()(SignUpModal));

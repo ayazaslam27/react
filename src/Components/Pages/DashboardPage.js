@@ -4,8 +4,9 @@ import MaterialLink from "@material-ui/core/Link";
 import { store } from "../../redux/store";
 import { connect } from "react-redux";
 import { setAuthorization, setActivePage } from "../../redux/actions";
+import { withTranslation } from "react-i18next";
 
-class DashboardComponent extends React.Component {
+class DashboardPage extends React.Component {
   componentDidMount() {
     this.props.onSetActivePage(5);
   }
@@ -25,13 +26,11 @@ class DashboardComponent extends React.Component {
   };
 
   render() {
+    const { t } = this.props;
     return (
       <div>
-        <h1>Dashboard</h1>
-        <div>
-          You are on Dashboard page. This page will explain the concept of
-          protected routing. Displays only if the user is authorized
-        </div>
+        <h1>{t("Dashboard.title")}</h1>
+        <div>{t("Dashboard.description")}</div>
         <MaterialLink onClick={this.handleSignOut}>sign out </MaterialLink>
       </div>
     );
@@ -49,5 +48,5 @@ export default withAuthorization(store.getState().auth.isUserLoggedIn)(
   connect(
     null,
     mapDispatchToProps
-  )(DashboardComponent)
+  )(withTranslation()(DashboardPage))
 );

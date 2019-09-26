@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import MaterialLink from "@material-ui/core/Link";
-import SignInComponent from "./SignIn";
-import SignUpComponent from "./SignUp";
+import SignInModal from "./SignInModal";
+import SignUpModal from "./SignUpModal";
 import { setActivePage } from "../../redux/actions";
+import { withTranslation } from "react-i18next";
 
-class AccountPage extends React.Component {
+class AuthenticationPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -41,30 +42,33 @@ class AccountPage extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
     let task;
     if (!this.props.authUser) {
       task = (
         <div>
-          <h1>Account</h1>
-          You are not logged in. Please{" "}
+          <h1> {t("Authentication.description")} </h1>
+          {t("Authentication.text1")}{" "}
           <MaterialLink onClick={this.handleSignInModal}>sign in </MaterialLink>
-          or if you still don't have an account{" "}
-          <MaterialLink onClick={this.handleSignupModal}>
-            sign up{" "}
-          </MaterialLink>{" "}
-          with us
-          <SignInComponent
+          {t("Authentication.text2")}{" "}
+          <MaterialLink onClick={this.handleSignupModal}>sign up </MaterialLink>{" "}
+          {t("Authentication.text3")}
+          <SignInModal
             showModal={this.state.showSignInModal}
             onChange={this.handleSignInModalChange}
-          ></SignInComponent>
-          <SignUpComponent
+          ></SignInModal>
+          <SignUpModal
             showModal={this.state.showSignupModal}
             onChange={this.handleSignUpModalChange}
-          ></SignUpComponent>
+          ></SignUpModal>
         </div>
       );
     } else {
-      task = <h3>Welcome {this.props.authUser.displayName}</h3>;
+      task = (
+        <h3>
+          {t("Welcome")} {this.props.authUser.displayName}
+        </h3>
+      );
     }
 
     return task;
@@ -86,4 +90,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AccountPage);
+)(withTranslation()(AuthenticationPage));
