@@ -15,6 +15,7 @@
   },
   "Authorisation": {
     "title": "Authorisation",
+        "description": "Sie müssen sich anmelden und ein Administrator sein, um eine Nachricht hinzufügen zu können. Der Einfachheit halber werden Benutzer mit einem Benutzernamen, der mit dem Buchstaben \"A\" beginnt, als Administrator angenommen. Alle anderen angemeldeten Benutzer sind nur Beobachter.",
     "your-name": "Ihre Name",
     "your-message": "Ihre Nachricht",
     "name": "Name",

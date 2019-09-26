@@ -15,6 +15,7 @@
   },
   "Authorisation": {
     "title": "Authorisation",
+    "description": "You need to log-in and be an admin to add message. For the sake of simplicity, users with username starting with alphabet \"A\" are assumed as Admin, All other signed up users are just observer.",
     "your-name": "Your Name",
     "your-message": "Your message",
     "name": "Name",

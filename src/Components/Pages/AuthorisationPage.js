@@ -10,6 +10,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import { Grid } from "@material-ui/core";
 import { withTranslation } from "react-i18next";
 
 const INITIAL_STATE = {
@@ -89,8 +90,9 @@ class AuthorisationPage extends React.Component {
     const { t } = this.props;
     const isInvalid = name === "" || message === "";
     return (
-      <div>
+      <Grid>
         <h1>{t("Authorisation.title")}</h1>
+        <p>{t("Authorisation.description")}</p>
         <Container maxWidth="sm">
           <TextField
             fullWidth
@@ -126,7 +128,6 @@ class AuthorisationPage extends React.Component {
             {t("Authorisation.send")}
           </Button>
           {error && <p>{error.message}</p>}
-
           <Table size="small">
             <TableHead>
               <TableRow>
@@ -146,7 +147,7 @@ class AuthorisationPage extends React.Component {
             </TableBody>
           </Table>
         </Container>
-      </div>
+      </Grid>
     );
   }
 }

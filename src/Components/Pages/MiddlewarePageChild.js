@@ -11,7 +11,7 @@ class MiddlewarePageChild extends React.Component {
 
     return (
       <div>
-        <h4>{t("Middleware.child-route")}</h4>
+        <h4>{t("Middleware.description2")}</h4>
         <h4>
           Passed property from route:{this.props.match.params.passingProps}
         </h4>

@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { setActivePage } from "../../redux/actions";
 import { withTranslation } from "react-i18next";
 import Container from "@material-ui/core/Container";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import { Grid } from "@material-ui/core";
 
 class HomePage extends React.Component {
   componentDidMount() {
@@ -12,21 +16,33 @@ class HomePage extends React.Component {
   render() {
     const { t } = this.props;
     return (
-      <Container maxWidth="sm">
+      <Grid>
         <h1>{t("home.title")}</h1>
         <h2>{t("home.description-main")}</h2>
-        <div>
+        <Container>
           <h3> {t("home.text1")}</h3>
-          <ul>
-            <li>React framework</li>
-            <li>Redux for state management</li>
-            <li>Firebase for backend </li>
-            <li>React i18n for Localization.</li>
-            <li>Material UI for styling.</li>
-          </ul>
+
+          <List>
+            <ListItem>
+              <ListItemText primary="React framework"></ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Redux for state management"></ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Firebase for backend"></ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="React i18n for Localization"></ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Material UI for styling"></ListItemText>
+            </ListItem>
+          </List>
+
           <h3> {t("home.text2")}</h3>
-        </div>
-      </Container>
+        </Container>
+      </Grid>
     );
   }
 }
