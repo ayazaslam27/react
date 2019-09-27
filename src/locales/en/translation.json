@@ -2,9 +2,9 @@
   "Welcome": "Welcome",
   "home": {
     "title": "Home",
-    "description-main": "A React-Redux-Firebase demo app",
+    "description-main": "A React-Redux-Firebase demo app by Ayaz Aslam",
     "text1": "This app uses",
-    "text2": "and further explains concept of protected and nested routing, redux, firebase authentication and authorisation access to the certain part of the app using realtime database rules associated with user roles."
+    "text2": "and further explains concept of responsive designing, protected and nested routing, redux, firebase authentication and authorisation access to the certain part of the app using realtime database rules associated with user roles. "
   },
   "Authentication": {
     "title": "Authentication",

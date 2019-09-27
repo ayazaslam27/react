@@ -2,9 +2,9 @@
   "Welcome": "Willkommen",
   "home": {
     "title": "Zuhause",
-    "description-main": "Ein React-Redux-Firebase demo app",
+    "description-main": "Ein React-Redux-Firebase demo app von Ayaz Aslam",
     "text1": "Diese App verwendet",
-    "text2": "Außerdem wird das Konzept von geschütztem und verschachteltem Routing, Redux, Firebase-Authentifizierung und Autorisierungszugriff auf den bestimmten Teil der App unter Verwendung von Echtzeit-Datenbankregeln erläutert, die Benutzerrollen zugeordnet sind."
+    "text2": "Außerdem wird das Konzept von responsive designing geschütztem und verschachteltem Routing, Redux, Firebase-Authentifizierung und Autorisierungszugriff auf den bestimmten Teil der App unter Verwendung von Echtzeit-Datenbankregeln erläutert, die Benutzerrollen zugeordnet sind."
   },
   "Authentication": {
     "title": "Authentication",
@@ -15,7 +15,7 @@
   },
   "Authorisation": {
     "title": "Authorisation",
-        "description": "Sie müssen sich anmelden und ein Administrator sein, um eine Nachricht hinzufügen zu können. Der Einfachheit halber werden Benutzer mit einem Benutzernamen, der mit dem Buchstaben \"A\" beginnt, als Administrator angenommen. Alle anderen angemeldeten Benutzer sind nur Beobachter.",
+    "description": "Sie müssen sich anmelden und ein Administrator sein, um eine Nachricht hinzufügen zu können. Der Einfachheit halber werden Benutzer mit einem Benutzernamen, der mit dem Buchstaben \"A\" beginnt, als Administrator angenommen. Alle anderen angemeldeten Benutzer sind nur Beobachter.",
     "your-name": "Ihre Name",
     "your-message": "Ihre Nachricht",
     "name": "Name",

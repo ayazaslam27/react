@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import { Link, Typography } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 
 class HomePage extends React.Component {
@@ -41,6 +42,9 @@ class HomePage extends React.Component {
           </List>
 
           <h3> {t("home.text2")}</h3>
+          <Typography variant="h5">
+            <Link href={"https://github.com/ayazaslam27/react"}>Github</Link>
+          </Typography>
         </Container>
       </Grid>
     );
